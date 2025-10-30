@@ -3,11 +3,7 @@ from sqlalchemy import create_engine, text
 import pandas as pd
 
 # --- Supabase Pooler Connection (IPv4 + SSL) ---
-DATABASE_URL = (
-    "postgresql+psycopg2://postgres.ozrslcahiekgbhjgavdn:"
-    "nbkUvCOJINUznlXt@aws-1-ap-southeast-1.pooler.supabase.com:"
-    "5432/postgres?sslmode=require"
-)
+DATABASE_URL = (st.secrets["SUPABASE_URL"])
 
 # --- Create engine with SSL and pre-ping ---
 engine = create_engine(DATABASE_URL, pool_pre_ping=True)
@@ -28,3 +24,4 @@ def run_query(query: str, params=None):
                 return df
             except Exception:
                 return None
+
