@@ -1,6 +1,7 @@
 # db_connect.py
 from sqlalchemy import create_engine, text
 import pandas as pd
+import streamlit as st    
 
 # --- Supabase Pooler Connection (IPv4 + SSL) ---
 DATABASE_URL = (st.secrets["SUPABASE_URL"])
@@ -24,4 +25,5 @@ def run_query(query: str, params=None):
                 return df
             except Exception:
                 return None
+
 
