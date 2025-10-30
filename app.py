@@ -110,7 +110,7 @@ if st.sidebar.button("Run Talent Match"):
         response = requests.post(
             url="https://openrouter.ai/api/v1/chat/completions",
             headers={
-                "Authorization": f"Bearer {st.secrets["OPENROUTER_API_KEY"]}",
+                "Authorization": f"Bearer {os.getenv('OPENROUTER_API_KEY', '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')}",
                 "Content-Type": "application/json",
                 "HTTP-Referer": "https://your-site-url.com",  # optional, for ranking
                 "X-Title": "AI Talent Match Dashboard"        # optional
@@ -128,3 +128,4 @@ if st.sidebar.button("Run Talent Match"):
 
     except Exception as e:
         st.error(f"AI Summary failed: {e}")
+
